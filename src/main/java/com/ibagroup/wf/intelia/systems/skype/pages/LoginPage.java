@@ -5,12 +5,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import com.freedomoss.crowdcontrol.webharvest.web.dto.SecureEntryDTO;
 import com.ibagroup.wf.intelia.core.clients.RobotDriverWrapper;
 import com.ibagroup.wf.intelia.core.config.ConfigurationManager;
 import com.ibagroup.wf.intelia.core.pagefactory.Wait;
 import com.ibagroup.wf.intelia.core.pagefactory.Wait.WaitFunc;
+import com.ibagroup.wf.intelia.core.security.SecureEntryDtoWrapper;
 import com.ibagroup.wf.intelia.systems.skype.clients.SkypeClient;
 import com.ibagroup.wf.intelia.systems.skype.popups.PopupHandled;
 import com.workfusion.rpa.helpers.RPA;
@@ -26,7 +25,7 @@ public class LoginPage extends RobotDriverWrapper {
         waitAndSwitchToWindow(SkypeClient.SEARCH_SKYPE_LOGIN_WINDOW, Integer.parseInt(getCfg().getConfigItem("skype.start_timeout", "30")));
     }
 
-    public MainPage login(SecureEntryDTO logonCreds) {
+    public MainPage login(SecureEntryDtoWrapper logonCreds) {
         new PopupHandled(getCfg()).closeUpdatePopup(SkypeClient.SEARCH_SKYPE_LOGIN_WINDOW);
         RPA.sleep(1000);
         userName.click();

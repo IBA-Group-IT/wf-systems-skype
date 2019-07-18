@@ -1,15 +1,15 @@
 package com.ibagroup.wf.intelia.systems.skype;
 
-import com.freedomoss.crowdcontrol.webharvest.web.dto.SecureEntryDTO;
 import com.ibagroup.wf.intelia.core.config.ConfigurationManager;
 import com.ibagroup.wf.intelia.core.robots.RobotProtocol;
+import com.ibagroup.wf.intelia.core.security.SecureEntryDtoWrapper;
 import com.ibagroup.wf.intelia.systems.skype.clients.SkypeClient;
 import com.ibagroup.wf.intelia.systems.skype.pages.LoginPage;
 import com.ibagroup.wf.intelia.systems.skype.pages.MainPage;
 
 public interface SkypeRobot extends RobotProtocol {
 	
-    default void initRobot(SecureEntryDTO loginCreds) {
+    default void initRobot(SecureEntryDtoWrapper loginCreds) {
     	SkypeClient client = new SkypeClient(getCfg());
 
         LoginPage loginPage = client.getLoginPage();
